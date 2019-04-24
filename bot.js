@@ -15,6 +15,7 @@ var {getDailySupportGIF, getMadeItGIF} = require('./util');
 const envKey = process.env.NUDGE_BOT_TOKEN;
 var superagent = require('superagent');
 var mammoth = require('mammoth');
+var moment = require('moment');
 var word_count = require('word-count');
 const pdf_parse = require('pdf-parse');
 mongoose.Promise = global.Promise;
@@ -110,7 +111,8 @@ function distractionCheck(trigger=null){
 function distractionCheck_users(rescuetime_user, trigger=false){
     var rescuetimeKey = rescuetime_user.rescuetime_key;
     var d = new Date();
-    var date = d.toISOString().split('T')[0];
+    //var date = d.toISOString().split('T')[0];
+    var date = moment().format().split('T')[0];
     console.log('distractionCheck_users', date);
     if(rescuetimeKey) {
         var url = "https://www.rescuetime.com/api/oauth/data";
